@@ -27,32 +27,39 @@ public class ChessBoard {
         ChessType queen = ChessType.TYP_QUEEN;
         ChessType king = ChessType.TYP_KING;
         ChessType knight = ChessType.TYP_KNIGHT;
-
+        
+        IMove kingInterface = new King();
+        IMove queenInterface = new Queen();
+        IMove bishopInterface = new Bishop();
+        IMove knightInterface = new Knight();
+        IMove rookInterface = new Rook();
+        IMove pawnInterface = new Pawn();
+        
         this.board = new Piece[8][8];
         
         for(int i = 0;i<8;i++){
-            board[i][1] = new Piece(white, pawn);
-            board[i][6] = new Piece(black, pawn);
+            board[i][1] = new Piece(white, pawn, pawnInterface);
+            board[i][6] = new Piece(black, pawn, pawnInterface);
             
             if(i == 0 || i == 7){
-                board[i][0] = new Piece(white, rook);
-                board[i][7] = new Piece(black, rook);
+                board[i][0] = new Piece(white, rook, rookInterface);
+                board[i][7] = new Piece(black, rook, rookInterface);
             }
             if(i == 1 || i == 6){
-                board[i][0] = new Piece(white, knight);
-                board[i][7] = new Piece(black, knight);
+                board[i][0] = new Piece(white, knight, knightInterface);
+                board[i][7] = new Piece(black, knight, knightInterface);
             }
             if(i == 2 || i == 5){
-                board[i][0] = new Piece(white, bishop);
-                board[i][7] = new Piece(black, bishop);
+                board[i][0] = new Piece(white, bishop, bishopInterface);
+                board[i][7] = new Piece(black, bishop, bishopInterface);
             }
             if(i == 3){
-                board[i][0] = new Piece(white, king);
-                board[i][7] = new Piece(black, king);
+                board[i][0] = new Piece(white, king, kingInterface);
+                board[i][7] = new Piece(black, king, kingInterface);
             }
             if(i == 4){
-                board[i][0] = new Piece(white, queen);
-                board[i][7] = new Piece(black, queen);
+                board[i][0] = new Piece(white, queen, queenInterface);
+                board[i][7] = new Piece(black, queen, queenInterface);
             }
         }
     }

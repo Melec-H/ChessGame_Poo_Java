@@ -6,7 +6,9 @@
 package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess.ChessColor;
+import fr.rphstudio.chess.interf.IChess.ChessPosition;
 import fr.rphstudio.chess.interf.IChess.ChessType;
+import java.util.List;
 
 /**
  *
@@ -14,10 +16,11 @@ import fr.rphstudio.chess.interf.IChess.ChessType;
  */
 public class Piece {
     
+    private IMove iMove;
     private ChessType ChessType;
     private ChessColor ChessColor;
     
-    public Piece(ChessColor color, ChessType type){
+    public Piece(ChessColor color, ChessType type, IMove iMove){
         this.ChessColor = color;
         this.ChessType = type;
     }
@@ -29,4 +32,10 @@ public class Piece {
     public ChessColor getColor(){
         return this.ChessColor;
     }
+    
+    public List<ChessPosition> getMoves(ChessPosition pos, ChessBoard board){
+        
+        iMove.getPossibleMoves(pos, board);
+    }
+    
 }
