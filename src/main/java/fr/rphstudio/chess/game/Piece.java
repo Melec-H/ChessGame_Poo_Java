@@ -23,6 +23,7 @@ public class Piece {
     public Piece(ChessColor color, ChessType type, IMove iMove){
         this.ChessColor = color;
         this.ChessType = type;
+        this.iMove = iMove;
     }
     
     public ChessType getType(){
@@ -35,8 +36,7 @@ public class Piece {
     
     public List<ChessPosition> getMoves(ChessPosition pos, ChessBoard board){
         
-        return iMove.getPossibleMoves(pos, board);
-        
+        return iMove.getPossibleMoves(pos, board);    
     }
     
 }
