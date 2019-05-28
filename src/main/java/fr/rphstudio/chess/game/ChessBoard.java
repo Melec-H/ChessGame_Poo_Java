@@ -5,46 +5,59 @@
  */
 package fr.rphstudio.chess.game;
 
-import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IChess.ChessColor;
 import fr.rphstudio.chess.interf.IChess.ChessPosition;
 import fr.rphstudio.chess.interf.IChess.ChessType;
 
 /**
  *
- * @author duhalgouetmelec
+ * @author jisseaudamien
  */
 public class ChessBoard {
     
-         //variables
-        private Piece[][] board;
+    private Piece[][] board;
+    
+    public ChessBoard(){
+        ChessColor white = ChessColor.CLR_WHITE;
+        ChessColor black = ChessColor.CLR_BLACK;
+
+        ChessType rook = ChessType.TYP_ROOK;
+        ChessType pawn = ChessType.TYP_PAWN;
+        ChessType bishop = ChessType.TYP_BISHOP;
+        ChessType queen = ChessType.TYP_QUEEN;
+        ChessType king = ChessType.TYP_KING;
+        ChessType knight = ChessType.TYP_KNIGHT;
+
+        this.board = new Piece[8][8];
         
-        public ChessBoard(){
+        for(int i = 0;i<8;i++){
+            board[i][1] = new Piece(white, pawn);
+            board[i][6] = new Piece(black, pawn);
             
-            ChessColor black = ChessColor.CLR_BLACK;
-            ChessColor white = ChessColor.CLR_WHITE;
-
-            ChessType rook = ChessType.TYP_ROOK;
-            ChessType bishop = ChessType.TYP_BISHOP;
-            ChessType knight = ChessType.TYP_KNIGHT;
-            ChessType queen = ChessType.TYP_QUEEN;
-            ChessType king = ChessType.TYP_KING;
-            ChessType pawn = ChessType.TYP_PAWN;
-
-            //coté blanc
-            //tour
-            this.board = new Piece[8][8];
-            
-            
-            board[0][0] = new Piece(black, rook);
-            
-            
-            
+            if(i == 0 || i == 7){
+                board[i][0] = new Piece(white, rook);
+                board[i][7] = new Piece(black, rook);
+            }
+            if(i == 1 || i == 6){
+                board[i][0] = new Piece(white, knight);
+                board[i][7] = new Piece(black, knight);
+            }
+            if(i == 2 || i == 5){
+                board[i][0] = new Piece(white, bishop);
+                board[i][7] = new Piece(black, bishop);
+            }
+            if(i == 3){
+                board[i][0] = new Piece(white, king);
+                board[i][7] = new Piece(black, king);
+            }
+            if(i == 4){
+                board[i][0] = new Piece(white, queen);
+                board[i][7] = new Piece(black, queen);
+            }
         }
-        
-        public Piece getPiece(ChessPosition pos){
-                    
-            return board[pos.x][pos.y];
-        }       
-        
+    }
+    
+    public Piece getPiece(ChessPosition pos){
+        return board[pos.x][pos.y];
+    }
 }

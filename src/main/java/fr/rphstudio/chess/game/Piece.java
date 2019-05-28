@@ -10,10 +10,9 @@ import fr.rphstudio.chess.interf.IChess.ChessType;
 
 /**
  *
- * @author duhalgouetmelec
+ * @author jisseaudamien
  */
 public class Piece {
-    
     
     private ChessType ChessType;
     private ChessColor ChessColor;
@@ -21,7 +20,7 @@ public class Piece {
     public Piece(ChessColor color, ChessType type){
         this.ChessColor = color;
         this.ChessType = type;
-    };
+    }
     
     public ChessType getType(){
         return this.ChessType;
@@ -30,5 +29,4 @@ public class Piece {
     public ChessColor getColor(){
         return this.ChessColor;
     }
-    
 }
