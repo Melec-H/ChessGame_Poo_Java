@@ -23,6 +23,7 @@ public class Piece {
     public Piece(ChessColor color, ChessType type, IMove iMove){
         this.ChessColor = color;
         this.ChessType = type;
+        this.iMove = iMove;
     }
     
     public ChessType getType(){

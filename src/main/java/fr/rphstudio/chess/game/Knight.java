@@ -20,7 +20,10 @@ public class Knight implements IMove{
     @Override
     public List<ChessPosition> getPossibleMoves(ChessPosition pos, ChessBoard board) {
         List listPosition = new ArrayList();
-        ChessPosition pos1 = new ChessPosition(5,3);
+        ChessPosition pos1;
+        pos1 = new ChessPosition(pos.x-1,pos.y-1);
+        listPosition.add(pos1);
+        pos1 = new ChessPosition(pos.x+1,pos.y+1);
         listPosition.add(pos1);
         return listPosition;
     }
