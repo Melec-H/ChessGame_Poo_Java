@@ -6,6 +6,7 @@
 package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
+import fr.rphstudio.chess.interf.IChess.ChessPosition;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
 public class Bishop implements IMove{
 
     @Override
-    public List<IChess.ChessPosition> getPossibleMoves() {
+    public List<IChess.ChessPosition> getPossibleMoves(ChessPosition pos, ChessBoard board) {
         List listPosition = new ArrayList();
         return listPosition;
     }

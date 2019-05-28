@@ -35,7 +35,8 @@ public class Piece {
     
     public List<ChessPosition> getMoves(ChessPosition pos, ChessBoard board){
         
-        iMove.getPossibleMoves(pos, board);
+        return iMove.getPossibleMoves(pos, board);
+        
     }
     
 }
