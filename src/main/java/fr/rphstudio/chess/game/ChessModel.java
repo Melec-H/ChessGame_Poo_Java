@@ -78,6 +78,11 @@ public class ChessModel implements IChess{
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
+        Piece piece = this.board.getPiece(p0);
+        board.removePiece(p0);
+        //nik on fait des set et getter to get better
+        board.setPiece(p1, piece);
+        
         
     }
 

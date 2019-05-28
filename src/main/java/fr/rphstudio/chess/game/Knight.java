@@ -23,19 +23,25 @@ public class Knight implements IMove{
         ArrayList<Integer> cavaX = new ArrayList<Integer>(Arrays.asList(2,1,-1,-2,-2,-1,1,2));
         ArrayList<Integer> cavaY = new ArrayList<Integer>(Arrays.asList(1,2,2,1,-1,-2,-2,-1));
         
+        List listPosition = new ArrayList();
+         
         for(int i = 0; i < 8; i++){
             
-        ChessPosition posI = new ChessPosition(cavaX.get(i), cavaY.get(i));
-        
+            int posX = pos.x + cavaX.get(i);
+            int posY = pos.y + cavaY.get(i);
+                    
+            ChessPosition posI = new ChessPosition(posX , posY);
+
+            
+            if(posX >= 0 && posX <= 7 && posY >= 0 && posY <=7){
+                if(board.getPiece(posI) == null){
+                    listPosition.add(posI);
+                }    
+                else if(board.getPiece(posI).getColor() != board.getPiece(pos).getColor()){
+                    listPosition.add(posI);
+                }
+            }
         }
-        
-        List listPosition = new ArrayList();
-        ChessPosition pos1 = new ChessPosition(6,2);
-        listPosition.add(pos1);
-        pos1 = new ChessPosition(pos.x+1,pos.y+1);
-        listPosition.add(pos1);
         return listPosition;
-        
     }
-    
 }
