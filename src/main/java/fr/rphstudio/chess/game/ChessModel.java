@@ -37,7 +37,8 @@ public class ChessModel implements IChess{
     @Override
     public void reinit() {
         // initialisation du plateau de jeu
-        this.board = new ChessBoard();
+        RemainingPieces compteur = new RemainingPieces();
+        this.board = new ChessBoard(compteur);
     }
 
     @Override
@@ -66,7 +67,8 @@ public class ChessModel implements IChess{
 
     @Override
     public int getNbRemainingPieces(ChessColor color) {
-        return 0;
+        return this.board.getRemainingPieces(color);
+        
     }
 
     @Override
@@ -88,11 +90,11 @@ public class ChessModel implements IChess{
         
         if(piece1 != null){
            if(piece1.getColor() == CLR_BLACK){
-             
+             board.decrementeRemainingPieces(CLR_BLACK);
            }
            else if(piece1.getColor() == CLR_WHITE){
                // call remove nb white
-               
+             board.decrementeRemainingPieces(CLR_WHITE);  
            }
            else{
                throw new UnsupportedOperationException();

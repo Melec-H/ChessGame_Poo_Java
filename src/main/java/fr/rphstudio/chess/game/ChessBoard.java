@@ -16,8 +16,9 @@ import fr.rphstudio.chess.interf.IChess.ChessType;
 public class ChessBoard {
     
     private Piece[][] board;
+    private RemainingPieces remainingPieces;
     
-    public ChessBoard(){
+    public ChessBoard(RemainingPieces compteur){
         ChessColor white = ChessColor.CLR_WHITE;
         ChessColor black = ChessColor.CLR_BLACK;
 
@@ -36,6 +37,7 @@ public class ChessBoard {
         IMove pawnInterface = new Pawn();
         
         this.board = new Piece[8][8];
+        this.remainingPieces = new RemainingPieces();
         
         for(int i = 0;i<8;i++){
             board[i][1] = new Piece(white, pawn, pawnInterface);
@@ -62,6 +64,14 @@ public class ChessBoard {
                 board[i][7] = new Piece(black, queen, queenInterface);
             }
         }
+    }
+    //remainingpieces
+    public int getRemainingPieces(ChessColor color){
+        return this.remainingPieces.getRemainingPieces(color);
+    }
+    
+    public void decrementeRemainingPieces(ChessColor color){
+        this.remainingPieces.decrementeRemainingPieces(color);
     }
     
     public Piece getPiece(ChessPosition pos){
