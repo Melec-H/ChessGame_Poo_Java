@@ -69,6 +69,7 @@ public class ChessBoard {
     }
     
     public void setPiece(ChessPosition pos, Piece piece){
+       
         board[pos.x][pos.y] = piece;
     }
     public void removePiece(ChessPosition pos){

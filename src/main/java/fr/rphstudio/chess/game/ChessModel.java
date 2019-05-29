@@ -7,6 +7,8 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.EmptyCellException;
 import fr.rphstudio.chess.interf.IChess;
+import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_BLACK;
+import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_WHITE;
 import fr.rphstudio.chess.interf.OutOfBoardException;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,11 +79,26 @@ public class ChessModel implements IChess{
     }
 
     @Override
-    public void movePiece(ChessPosition p0, ChessPosition p1) {
-        Piece piece = this.board.getPiece(p0);
-        board.removePiece(p0);
+    public void movePiece(ChessPosition pos0, ChessPosition pos1) {
+        
+        Piece piece0 = this.board.getPiece(pos0);
+        
+        Piece piece1 = this.board.getPiece(pos1);
+        
+        if(piece1 != null){
+           if(piece1.getColor() == CLR_BLACK){
+              // call remove nb black
+           }
+           else if(piece1.getColor() == CLR_WHITE){
+               // call remove nb white
+           }
+           else{
+               throw new UnsupportedOperationException();
+           }
+        }
+         board.removePiece(pos0);
         //nik on fait des set et getter to get better
-        board.setPiece(p1, piece);
+        board.setPiece(pos1, piece0);
         
         
         //  board.move(p0,p1);
