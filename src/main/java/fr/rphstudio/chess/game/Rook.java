@@ -23,12 +23,14 @@ public class Rook implements IMove{
         int posX = pos.x;
         int posY = pos.y;
         
-        ChessPosition pos1 = new ChessPosition(posX, posY +1);
-        ChessPosition pos2 = new ChessPosition(posX+1, posY);
-        ChessPosition pos3 = new ChessPosition(posX-1, posY);
-        ChessPosition pos4 = new ChessPosition(posX, posY-1);
         
-        for(int i = 0; i < 7; i++){
+        
+        
+        
+        for(int i = 1; i <= 7; i++){
+            
+            ChessPosition pos1 = new ChessPosition(posX, posY +i);
+            
             if(board.isPosInBoard(pos1) == false){
                 break;
             }
@@ -44,7 +46,10 @@ public class Rook implements IMove{
                 }   
             }
         }
-        for(int i = 0; i < 7; i++){
+        for(int i = 1; i <= 7; i++){
+            
+            ChessPosition pos2 = new ChessPosition(posX+i, posY);
+            
             if(board.isPosInBoard(pos2) == false){
                 break;
             }
@@ -60,7 +65,10 @@ public class Rook implements IMove{
                 }
             }
         }
-        for(int i = 0; i < 7; i++){
+        for(int i = 1; i <= 7; i++){
+            
+            ChessPosition pos3 = new ChessPosition(posX-i, posY);
+            
             if(board.isPosInBoard(pos3) == false){
                 break;
             }
@@ -76,7 +84,10 @@ public class Rook implements IMove{
                 }
             }
         }
-        for(int i = 0; i < 7; i++){
+        for(int i = 1; i <= 7; i++){
+            
+            ChessPosition pos4 = new ChessPosition(posX, posY-i);
+
             if(board.isPosInBoard(pos4) == false){
                 break;
             }
