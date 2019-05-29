@@ -85,20 +85,23 @@ public class ChessModel implements IChess{
         
         Piece piece1 = this.board.getPiece(pos1);
         
+        
         if(piece1 != null){
            if(piece1.getColor() == CLR_BLACK){
-              // call remove nb black
+             
            }
            else if(piece1.getColor() == CLR_WHITE){
                // call remove nb white
+               
            }
            else{
                throw new UnsupportedOperationException();
            }
         }
-         board.removePiece(pos0);
+        board.removePiece(pos0);
         //nik on fait des set et getter to get better
         board.setPiece(pos1, piece0);
+        
         
         
         //  board.move(p0,p1);
