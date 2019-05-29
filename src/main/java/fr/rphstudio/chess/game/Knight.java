@@ -33,7 +33,7 @@ public class Knight implements IMove{
             ChessPosition posI = new ChessPosition(posX , posY);
 
             
-            if(posX >= 0 && posX <= 7 && posY >= 0 && posY <=7){
+            if(board.isPosInBoard(posI) == true){
                 if(board.getPiece(posI) == null){
                     listPosition.add(posI);
                 }    

@@ -20,7 +20,7 @@ public class Bishop implements IMove{
     public List<IChess.ChessPosition> getPossibleMoves(ChessPosition pos, ChessBoard board) {
         List listPosition = new ArrayList();
         
-        for(int direction = 0; direction<3; direction++){
+        for(int direction = 0; direction<=3; direction++){
             int dx = 1;
             int dy = 1;
             
@@ -31,8 +31,8 @@ public class Bishop implements IMove{
                 dy = -1;
             }
             
-            for(int distance = 1; distance < 7; distance++){
-                ChessPosition nextPos = new ChessPosition(dx, dy);
+            for(int distance = 1; distance <= 7; distance++){
+                ChessPosition nextPos = new ChessPosition(pos.x + dx*distance, pos.y + dy*distance);
                 
                 if(board.isPosInBoard(nextPos) == false){
                     break;

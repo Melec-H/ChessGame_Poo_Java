@@ -22,11 +22,7 @@ public class Rook implements IMove{
         
         int posX = pos.x;
         int posY = pos.y;
-        
-        
-        
-        
-        
+
         for(int i = 1; i <= 7; i++){
             
             ChessPosition pos1 = new ChessPosition(posX, posY +i);
