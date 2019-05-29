@@ -74,4 +74,12 @@ public class ChessBoard {
     public void removePiece(ChessPosition pos){
         board[pos.x][pos.y] = null;
     }
+    public boolean isPosInBoard(ChessPosition pos){
+        if(pos.x >= 0 && pos.x <= 7 && pos.y >= 0 && pos.y <=7){
+            return true;
+        }
+        else{
+            return false;
+        } 
+    }
 }

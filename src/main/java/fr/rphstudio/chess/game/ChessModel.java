@@ -84,6 +84,8 @@ public class ChessModel implements IChess{
         board.setPiece(p1, piece);
         
         
+        //  board.move(p0,p1);
+        
     }
 
     @Override
