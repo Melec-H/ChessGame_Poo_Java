@@ -19,11 +19,13 @@ public class Piece {
     private IMove iMove;
     private ChessType ChessType;
     private ChessColor ChessColor;
+    private boolean hasMoved;
     
     public Piece(ChessColor color, ChessType type, IMove iMove){
         this.ChessColor = color;
         this.ChessType = type;
         this.iMove = iMove;
+        this.hasMoved = false;
     }
     
     public ChessType getType(){
@@ -37,6 +39,14 @@ public class Piece {
     public List<ChessPosition> getMoves(ChessPosition pos, ChessBoard board){
         
         return iMove.getPossibleMoves(pos, board);    
+    }
+    
+    public boolean getHasMoved(){
+        return this.hasMoved;
+    }
+    
+    public void setHasMoved(){
+        this.hasMoved = true;
     }
     
 }

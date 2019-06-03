@@ -9,6 +9,7 @@ import fr.rphstudio.chess.interf.EmptyCellException;
 import fr.rphstudio.chess.interf.IChess;
 import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_BLACK;
 import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_WHITE;
+import static fr.rphstudio.chess.interf.IChess.ChessType.TYP_KING;
 import fr.rphstudio.chess.interf.OutOfBoardException;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +89,7 @@ public class ChessModel implements IChess{
         Piece piece1 = this.board.getPiece(pos1);
         
         
+        //decrementation de remainingList
         if(piece1 != null){
            if(piece1.getColor() == CLR_BLACK){
              board.decrementeRemainingPieces(CLR_BLACK);
@@ -100,11 +102,44 @@ public class ChessModel implements IChess{
                throw new UnsupportedOperationException();
            }
         }
-        board.removePiece(pos0);
+        if(piece0.getType() == TYP_KING){
+            if(pos1.x - pos0.x <= -2){
+                board.removePiece(pos0);
         //nik on fait des set et getter to get better
-        board.setPiece(pos1, piece0);
+                board.setPiece(pos1, piece0);
+                
+                
+                
+                ChessPosition tour = new ChessPosition(0, pos0.y);
+                Piece tourToRemove = board.getPiece(tour);
+                ChessPosition tourNewPlace = new ChessPosition(2, pos0.y);
+                board.removePiece(tour);
+                board.setPiece(tourNewPlace,tourToRemove);
+                
+                
+                
+            }
+            else if(pos1.x - pos0.x >= 2){
+                board.removePiece(pos0);
+        //nik on fait des set et getter to get better
+                board.setPiece(pos1, piece0);
+                
+                ChessPosition tour = new ChessPosition(7, pos0.y);
+                Piece tourToRemove = board.getPiece(tour);
+                ChessPosition tourNewPlace = new ChessPosition(5, pos0.y);
+                board.removePiece(tour);
+                board.setPiece(tourNewPlace,tourToRemove);
+                
+            }
+        }
+        else{
+            board.removePiece(pos0);
+        //nik on fait des set et getter to get better
+            board.setPiece(pos1, piece0);
+        }
         
         
+        board.getPiece(pos1).setHasMoved();
         
         //  board.move(p0,p1);
         

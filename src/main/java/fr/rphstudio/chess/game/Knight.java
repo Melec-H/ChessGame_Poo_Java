@@ -16,7 +16,8 @@ import java.util.List;
  */
 public class Knight implements IMove{
     
-
+    
+    
     @Override
     public List<ChessPosition> getPossibleMoves(ChessPosition pos, ChessBoard board) {
         
@@ -42,6 +43,7 @@ public class Knight implements IMove{
                 }
             }
         }
+        
         return listPosition;
     }
 }

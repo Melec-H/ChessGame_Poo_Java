@@ -16,6 +16,7 @@ import java.util.List;
  * @author deruepaul
  */
 public class King implements IMove{
+    
 
     @Override
     public List<IChess.ChessPosition> getPossibleMoves(ChessPosition pos, ChessBoard board) {
@@ -23,6 +24,13 @@ public class King implements IMove{
         
         ArrayList<Integer> kingX = new ArrayList<Integer>(Arrays.asList(1, 1, 0, -1, -1, -1, 0, 1));
         ArrayList<Integer> kingY = new ArrayList<Integer>(Arrays.asList(0, -1, -1, -1, 0, 1, 1, 1));
+        
+        //posTour
+        
+        ChessPosition posTourDroite = new ChessPosition(0, pos.y);
+        
+        ChessPosition posTourGauche = new ChessPosition(7, pos.y);
+        
         
         for(int i = 0; i < 8; i++){
             
@@ -40,6 +48,14 @@ public class King implements IMove{
                     listPosition.add(posI);
                 }
             }
+        }
+        if(board.getPiece(pos).getHasMoved() == false && board.getPiece(posTourDroite).getHasMoved() == false){
+            ChessPosition roque1 = new ChessPosition(6, pos.y);
+            listPosition.add(roque1);
+        }
+        if(board.getPiece(pos).getHasMoved() == false && board.getPiece(posTourGauche).getHasMoved() == false){
+            ChessPosition roque2 = new ChessPosition(1, pos.y);
+            listPosition.add(roque2);
         }
         
         return listPosition;
