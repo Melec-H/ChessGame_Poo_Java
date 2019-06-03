@@ -183,7 +183,7 @@ public class ChessModel implements IChess{
                             if(piece1 != null && piece1.getColor() != piece0.getColor()){
                                 
                                 // On demande les déplacements des pièces enemmies
-                                 List<ChessPosition> list = getPieceMoves(posEnemy);
+                                 List<ChessPosition> list = piece1.getMoves(posEnemy, board);
                                 
                                 // On boucle sur toutes les positions
                                 
