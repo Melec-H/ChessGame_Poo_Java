@@ -97,10 +97,12 @@ public class ChessModel implements IChess{
         if(piece1 != null){
            if(piece1.getColor() == CLR_BLACK){
              board.decrementeRemainingPieces(CLR_BLACK);
+             board.addToRemovedList(piece1);
            }
            else if(piece1.getColor() == CLR_WHITE){
                // call remove nb white
-             board.decrementeRemainingPieces(CLR_WHITE);  
+             board.decrementeRemainingPieces(CLR_WHITE); 
+             board.addToRemovedList(piece1);
            }
            else{
                throw new UnsupportedOperationException();

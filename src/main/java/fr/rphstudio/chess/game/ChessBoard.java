@@ -79,6 +79,9 @@ public class ChessBoard {
         return this.removedPiece.getRemovedPiece(color);
                 
     }
+    public void addToRemovedList(Piece piece){
+        this.removedPiece.setRemovedPiece(piece);
+    }
     
     public void decrementeRemainingPieces(ChessColor color){
         this.remainingPieces.decrementeRemainingPieces(color);
