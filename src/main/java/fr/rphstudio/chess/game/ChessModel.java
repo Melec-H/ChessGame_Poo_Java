@@ -157,13 +157,46 @@ public class ChessModel implements IChess{
         else{
             board.setPiece(pos1, piece0);
         }
-        
         //  board.move(p0,p1);
-        
     }
 
     @Override
-    public ChessKingState getKingState(ChessColor color) {
+    public ChessKingState getKingState(ChessColor color) { 
+        // On boucle sur toutes les cases
+        for(int i = 0; i<8; i++){
+            for(int j = 0; j<8; j++){
+                ChessPosition pos = new ChessPosition(i, j);
+                Piece piece0 = this.board.getPiece(pos);
+                
+                // On recherche la position du roi dont la couleur est définie
+                if(piece0 != null && piece0.getType() == ChessType.TYP_KING && piece0.getColor() == color){
+                    
+                    // On boucle à nouveau sur toutes les cases
+                    for(int k = 0; k<8; k++){
+                        for(int l = 0; l<8; l++){
+                            ChessPosition posEnemy = new ChessPosition(k, l);
+                            Piece piece1 = this.board.getPiece(posEnemy);
+                            
+                            // On recherche les positions des pièces enemmies
+                            if(piece1 != null && piece1.getColor() != piece0.getColor()){
+                                
+                                // On demande les déplacements des pièces enemmies
+                                 List<ChessPosition> list = getPieceMoves(posEnemy);
+                                
+                                // On boucle sur toutes les positions
+                                
+                                for(int m = 0; m<list.size(); m++){
+                                   if(pos == list.get(m)){
+                                        // On vérifie si le roi est en danger
+                                        return ChessKingState.KING_THREATEN;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         return ChessKingState.KING_SAFE;
     }
 
