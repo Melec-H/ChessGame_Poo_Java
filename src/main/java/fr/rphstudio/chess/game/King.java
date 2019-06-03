@@ -50,14 +50,24 @@ public class King implements IMove{
             }
         }
         if(board.getPiece(pos).getHasMoved() == false && board.getPiece(posTourDroite).getHasMoved() == false){
-            ChessPosition roque1 = new ChessPosition(6, pos.y);
-            listPosition.add(roque1);
+            ChessPosition static1 = new ChessPosition(1, pos.y);
+            ChessPosition static2 = new ChessPosition(2, pos.y);
+            ChessPosition static3 = new ChessPosition(3, pos.y);
+            
+            ChessPosition static4 = new ChessPosition(4, pos.y);
+            ChessPosition static5 = new ChessPosition(5, pos.y);
+            ChessPosition static6 = new ChessPosition(6, pos.y);
+            
+            if(board.getPiece(static4) == null && board.getPiece(static5) == null && board.getPiece(static6) == null){
+                ChessPosition roque1 = new ChessPosition(6, pos.y);
+                listPosition.add(roque1);
+            }
+         
+            if(board.getPiece(static1) == null && board.getPiece(static2) == null && board.getPiece(static3) == null){
+                ChessPosition roque2 = new ChessPosition(1, pos.y);
+                listPosition.add(roque2);
+            }        
         }
-        if(board.getPiece(pos).getHasMoved() == false && board.getPiece(posTourGauche).getHasMoved() == false){
-            ChessPosition roque2 = new ChessPosition(1, pos.y);
-            listPosition.add(roque2);
-        }
-        
         return listPosition;
     }
     
