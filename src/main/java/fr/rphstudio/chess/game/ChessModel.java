@@ -9,7 +9,11 @@ import fr.rphstudio.chess.interf.EmptyCellException;
 import fr.rphstudio.chess.interf.IChess;
 import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_BLACK;
 import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_WHITE;
+
 import static fr.rphstudio.chess.interf.IChess.ChessType.TYP_KING;
+
+import static fr.rphstudio.chess.interf.IChess.ChessType.TYP_PAWN;
+
 import fr.rphstudio.chess.interf.OutOfBoardException;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,9 +89,9 @@ public class ChessModel implements IChess{
     public void movePiece(ChessPosition pos0, ChessPosition pos1) {
         
         Piece piece0 = this.board.getPiece(pos0);
-        
         Piece piece1 = this.board.getPiece(pos1);
-        
+        Piece whiteQueen = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_QUEEN, new Queen());
+        Piece blackQueen = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_QUEEN, new Queen());
         
         //decrementation de remainingList
         if(piece1 != null){
@@ -102,6 +106,7 @@ public class ChessModel implements IChess{
                throw new UnsupportedOperationException();
            }
         }
+
         if(piece0.getType() == TYP_KING){
             if(pos1.x - pos0.x <= -2){
                 board.removePiece(pos0);
@@ -138,8 +143,20 @@ public class ChessModel implements IChess{
             board.setPiece(pos1, piece0);
         }
         
+        board.removePiece(pos0);
         
+
         board.getPiece(pos1).setHasMoved();
+
+        if(piece0.getType() == TYP_PAWN && piece0.getColor() == CLR_WHITE && pos0.y == 6){
+            board.setPiece(pos1, whiteQueen);
+        }
+        else if(piece0.getType() == TYP_PAWN && piece0.getColor() == CLR_BLACK && pos0.y == 1){
+            board.setPiece(pos1, blackQueen);
+        }
+        else{
+            board.setPiece(pos1, piece0);
+        }
         
         //  board.move(p0,p1);
         
