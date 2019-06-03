@@ -169,7 +169,8 @@ public class ChessModel implements IChess{
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
-        return new ArrayList<>();    
+ 
+        return this.board.getRemovedList(color);
     }
 
     @Override

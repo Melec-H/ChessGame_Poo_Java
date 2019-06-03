@@ -8,6 +8,7 @@ package fr.rphstudio.chess.game;
 import fr.rphstudio.chess.interf.IChess.ChessColor;
 import fr.rphstudio.chess.interf.IChess.ChessPosition;
 import fr.rphstudio.chess.interf.IChess.ChessType;
+import java.util.List;
 
 /**
  *
@@ -17,6 +18,7 @@ public class ChessBoard {
     
     private Piece[][] board;
     private RemainingPieces remainingPieces;
+    private RemovedPieceList removedPiece;
     
     public ChessBoard(RemainingPieces compteur){
         ChessColor white = ChessColor.CLR_WHITE;
@@ -29,6 +31,8 @@ public class ChessBoard {
         ChessType king = ChessType.TYP_KING;
         ChessType knight = ChessType.TYP_KNIGHT;
         
+        
+        
         IMove kingInterface = new King();
         IMove queenInterface = new Queen();
         IMove bishopInterface = new Bishop();
@@ -38,6 +42,7 @@ public class ChessBoard {
         
         this.board = new Piece[8][8];
         this.remainingPieces = new RemainingPieces();
+        this.removedPiece = new RemovedPieceList();
         
         for(int i = 0;i<8;i++){
             board[i][1] = new Piece(white, pawn, pawnInterface);
@@ -68,6 +73,11 @@ public class ChessBoard {
     //remainingpieces
     public int getRemainingPieces(ChessColor color){
         return this.remainingPieces.getRemainingPieces(color);
+    }
+    
+    public List<ChessType> getRemovedList(ChessColor color){
+        return this.removedPiece.getRemovedPiece(color);
+                
     }
     
     public void decrementeRemainingPieces(ChessColor color){
